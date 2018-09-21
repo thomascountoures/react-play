@@ -1,0 +1,68 @@
+- React is a JavaScript library that is used to produce HTML that is shown to a user in a web browser
+- When we write React code, we're writing individual components or views
+    - Components (Views) are snippets of code that produce HTML
+    - So whenever you think component or view, think something that produces HTML
+- When we write React code, we write multiple different components, and we nest these components
+together by placing one inside the other, in different fashions, to make really complex applications
+relatively simple
+- A component is a collection of JavaScript functions that produce HTML. So when we are making a component,
+we are writing JavaScript, but it is ultimately going to produce HTML.
+
+- JSX (HTML looking stuff) is a subset, or dialect of JavaScript, that allows us to write what looks like HTML,
+inside of our JavaScript, but is really behind the scenes, just JavaScript.
+    - Webpack and Babel is going to do some level of transpiling of the code before it ran in the browser
+
+- React diverged into two separate libraries: 
+    - The core library, React, knows how to work with React components (how to render them, how to nest them together, etc.)
+    - ReactDOM handles the functionality of taking a component and inserting it into the DOM
+
+- When we create a component, we are creating a CLASS of a component, a type of a component
+    - We could have many different instances of a component
+    - In order to render it to the screen, we need to instatiate, or create an instance of, the component, before
+    we render it to the DOM
+- When we write something like <div></div>, it actually calls createElement for us
+    - Whenever we write JSX, it actually calls React.createElement() for us.
+    - Whenever we write JSX, and we write a component name, the component name is a component class, but using it inside of JSX,
+    turns into into a component instance
+        - ie. <div></div> (div is the name of the component class), as if it was written like this:
+            
+            // this is a COMPONENT CLASS
+            const div = function() {
+                return <div></div>;
+            }
+            
+            // wrapping it in JSX tags turns it into a COMPONENT INSTANCE
+            // it calls React.createElement("div", null);
+            <div></div>
+
+            // tip: whenever we have a tag with JSX that has no content in it, we can
+            // make a self closing tag (this is also valid JSX)
+            <div />
+
+- Functional component: a component that is literally a function. One function, some info goes in, some JSX comes out.
+    - ex: 
+        const App = () => {
+            return <div></div>;
+        }
+- Class component: used whenever we want a component to have some kind of internal record keeping.
+    - Some ability for it to be aware of itself, and what has happened to it since it's been rendered
+    - Created with ES6 classes
+    - Class components are rendered to the page the same way a functional component
+
+- Deciding when to use a class based component vs. a functional based component can be challenging. In general,
+start off with a functional based component, and only when you decide that you need added functionality, should
+you refactor it to a class
+
+- State: State is a plain JavaScript object that is used to record and react to user events.
+    - Each class based component that we define has its own state object 
+    - Whenever a component's state is changed (when you call setState()), the component immediately re-renders, and also
+    forces all of its children to re-render as well    
+    - Functional components do not have state - only class based components do
+    - All JavaScript classes have a special function called constructor()
+        - It is the first and only function called automatically, whenever a new instance of the class is created (so, all the time)
+        - The constructor function is reserved for doing some setup inside of our class, like initializing variables, initializing state,
+        and stuff like that
+        - ONLY inside the constructor function, do we ever manipulate state, ex. this.state = { // something };
+    - Whenever you want to update the component in some fashion, be thinking about state
+
+Controlled Field: A form element, like an input, whose value is set by the state, rather than the other way around
